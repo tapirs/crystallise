@@ -1,0 +1,47 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/php:7.1-node-browsers
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mysql:9.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run: sudo apt-get install libpng-dev
+      - run: sudo docker-php-ext-install gd
+      - run: sudo docker-php-ext-install zip
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      #- run: php -r "copy('https://getcomposer.org/installer', '/home/circleci/repo/composer-setup.php');"
+      #- run: php -r "if (hash_file('SHA384', '/home/circleci/repo/composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/home/circleci/repo/composer-setup.php'); } echo PHP_EOL;"
+      #- run: php /home/circleci/repo/composer-setup.php
+      #- run: php -r "unlink('/home/circleci/repo/composer-setup.php');"
+      #- run: php /home/circleci/repo/composer.phar self-update
+      #- run: sudo mv /home/circleci/repo/composer.phar /usr/local/bin/composer
+
+      - run: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+
+      # run tests!
+      - run: vendor/bin/phpunit ~/repo/tests
