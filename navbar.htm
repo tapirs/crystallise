@@ -1,0 +1,44 @@
+<form class="form-horizontal" id="logout" action="logout.php" method="POST" enctype="application/x-www-form-urlencoded"></form>
+<form id="account_form" action="account_form.php" method="post">
+  <input type="hidden" name="formname" value="account_form">
+</form>
+
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded sticky-top">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.tapirs-technologies.co.uk/forms/index.php">home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript: submitform('account_form')">my account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript: logout()">logout</a>
+      </li>
+    </ul>
+
+    <!--<form class="form-inline my-2 myaccount_form">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>-->
+  </div>
+</nav>
+
+<!--<div>
+  <script>
+(function() {
+  var cx = '018208619079473057248:r06ihbb2h1a';
+  var gcse = document.createElement('script');
+  gcse.type = 'text/javascript';
+  gcse.async = true;
+  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(gcse, s);
+})();
+</script>
+<gcse:search></gcse:search>
+</div>-->
