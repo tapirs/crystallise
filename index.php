@@ -77,6 +77,8 @@ include_once 'common.php';
 
    <?php
 
+   readfile('../../../common/navbar.htm');
+
    if(!isset($uid) || !isset($pwd)) {
      print '<div class="jumbotron text-center" style="margin-bottom:0px">
        <h1 class="display-3">welcome</h1>
@@ -86,7 +88,6 @@ include_once 'common.php';
      </div>';
 
      echo '<div class="container">';
-     readfile('../../../common/navbar.htm');
 
       print'<p class="card-text">please log into your account by entering your email address and password</p>';
       print'<p class="card-text">register for a new account by clicking the register button below</p>';
@@ -116,8 +117,6 @@ include_once 'common.php';
       </div>';
     } else {
       echo '<div class="container">';
-
-      readfile('../../../common/navbar.htm');
 
       print '<H1>list of forms</H1>';
 
