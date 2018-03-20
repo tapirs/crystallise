@@ -86,7 +86,7 @@ include_once 'common.php';
      </div>';
 
      echo '<div class="container">';
-
+     readfile('../../../common/navbar.htm');
 
       print'<p class="card-text">please log into your account by entering your email address and password</p>';
       print'<p class="card-text">register for a new account by clicking the register button below</p>';
